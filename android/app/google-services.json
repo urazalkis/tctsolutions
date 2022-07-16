@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "968016561709",
+    "project_id": "tctsolutions-166a0",
+    "storage_bucket": "tctsolutions-166a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968016561709:android:df5a94bd357f185bfcdaa4",
+        "android_client_info": {
+          "package_name": "com.motaperp.tctsolutions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968016561709-e7ko11bs1fnshk07j0rm305f76he1ctb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKXf8yW6OJo7bOA_M5Xw9mZTO3zDm5UcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968016561709-e7ko11bs1fnshk07j0rm305f76he1ctb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

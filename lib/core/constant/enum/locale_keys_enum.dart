@@ -1,0 +1,2 @@
+enum PreferencesKeys {userId,userName,password,departmentId,admin,loginId,title,authorizedName,phoneCompany,phoneEmployee,profession,city,
+  type,jobAcceptStatus,employeeJobId,reserveJobId,dbUserName,dbPassword,}
