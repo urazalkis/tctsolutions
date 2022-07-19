@@ -16,6 +16,7 @@ import 'package:motaperp_tctsolutions/product/widget/card/card_my_job.dart';
 import 'package:provider/src/provider.dart';
 import '../../../core/constant/navigation/navigation_constants.dart';
 import '../../../core/init/navigation/navigation_service.dart';
+import '../../../product/widget/app_bar/app_bar_custom.dart';
 import 'job_employee_view_model.dart';
 import 'job_state.dart';
 
@@ -31,160 +32,157 @@ class JobEmployeeView extends StatelessWidget {
         context.read<JobEmployeeViewModel>().init();
       },
       onPageBuilder: (BuildContext context, JobEmployeeViewModel viewModel) => Scaffold(
+        appBar: AppBarCustom(title:LocaleKeys.activeJobPool.locale,),
         resizeToAvoidBottomInset: false,
-        body: WillPopScope(
-          onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-          child: Container(
-            height: context.screenHeight,
-            width:  context.screenWidth,
-            decoration: ColorConstants.instance.appBackgroundBlueColor,
-            child: SingleChildScrollView(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.only(left:context.screenWidth/30,right: context.screenWidth/30,bottom: 20,top: 20),
-                  child:Column(
-                    children: [
-                      Row(
-                        children: [
-                          Spacer(),
-                          ImageWidget(iconUrl: UrlIcon.instance.appLogoUrl, height: context.screenHeight/15),
-                        ],
-                      ),
-                     BlocBuilder<JobEmployeeViewModel,IJobEmployeeState>(
-                          builder: (context, state) {
-                        if (state is JobEmployeeLoading) {
+        body: SafeArea(
+          child: WillPopScope(
+            onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
+            child: Container(
+              height: context.screenHeight,
+              width:  context.screenWidth,
+              decoration: ColorConstants.instance.appBackgroundBlueColor,
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(left:context.screenWidth/30,right: context.screenWidth/30,bottom: 20,top: 20),
+                    child:Column(
+                      children: [
+                       BlocBuilder<JobEmployeeViewModel,IJobEmployeeState>(
+                            builder: (context, state) {
+                          if (state is JobEmployeeLoading) {
 
-                          return Padding(padding:EdgeInsets.only(top:context.screenHeight/3),child: CustomCircularProgressIndicator());
-                        }
-                        else if(state is JobEmployeeError){
-                          print("zortladı");
-                          return Center();
-                        }
-                       else if(state is JobEmployeeLoaded){
-                         return Column(
-                            children: [
-                              state.myList.length>0 ?
-                              ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: state.myList.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: EdgeInsets.only(bottom: 20),
-                                    child: CardMyJob(
-                                      gradientColor:(LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)==state.myList[index].jobId) &&
-                                          (LocaleManager.instance.getStringValue(PreferencesKeys.jobAcceptStatus)=='1') ?
-                                          LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                          Colors.green,
-                                          Colors.green,
-                                        ],
-                                      ) : (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.reserveJobId)||
-                                          (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)))  ?
-                                      LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                          Color(0xFFA00D00),
-                                          Color(0xFFA00D00),
-                                        ],
-                                      )
-                                          : LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                          Color(0xFF296689),
-                                          Color(0xFF28639B),
-                                          Color(0xFF296689),
-                                        ],
-                                      ),
-                                      job: state.myList[index].jobName,
-                                      company: state.myList[index].company,
-                                      jobStartingDate: state.myList[index].startingDate,
-                                      jobCompletionDate: state.myList[index].completionDate,
-                                      jobStartingTime: state.myList[index].startingTime,
-                                      jobCompletionTime: state.myList[index].completionTime,
-                                      dayCount: state.myList[index].dayCount,
-                                      onPressed: (){
-                                        (LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)==state.myList[index].jobId) &&
-                                            (LocaleManager.instance.getStringValue(PreferencesKeys.jobAcceptStatus)=='1') ? null
-
-                                            :  (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.reserveJobId)||
+                            return Padding(padding:EdgeInsets.only(top:context.screenHeight/3),child: CustomCircularProgressIndicator());
+                          }
+                          else if(state is JobEmployeeError){
+                            print("zortladı");
+                            return Center();
+                          }
+                         else if(state is JobEmployeeLoaded){
+                           return Column(
+                              children: [
+                                state.myList.length>0 ?
+                                ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: state.myList.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(bottom: 20),
+                                      child: CardMyJob(
+                                        gradientColor:(LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)==state.myList[index].jobId) &&
+                                            (LocaleManager.instance.getStringValue(PreferencesKeys.jobAcceptStatus)=='1') ?
+                                            LinearGradient(
+                                          begin: Alignment.topRight,
+                                          end: Alignment.bottomLeft,
+                                          colors: [
+                                            Colors.green,
+                                            Colors.green,
+                                          ],
+                                        ) : (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.reserveJobId)||
                                             (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)))  ?
-                                        showDialog(
-                                            context: context,
-                                          builder: (BuildContext context){
-                                            return AlertDialogReserve(
-                                              title: '${LocaleKeys.jobEmployee_cancelReserveQuestion.locale}',
-                                              buttonTitle:'${LocaleKeys.jobEmployee_cancelReserve.locale}',
-                                              company:state.myList[index].company,
-                                              jobName: state.myList[index].jobName,
-                                              jobStartingDate: state.myList[index].startingDate,
-                                              jobCompletionDate: state.myList[index].completionDate,
-                                              jobStartingTime: state.myList[index].startingTime,
-                                              jobCompletionTime: state.myList[index].completionTime,
-                                              totalJobDay: state.myList[index].dayCount,
-                                              isLoading:false,
-                                              buttonColor: Colors.deepOrangeAccent,
-                                              onConfirm: () { context.read<JobEmployeeViewModel>().fetchCancelReservedJob(state.myList[index].jobId!);Navigator.pop(context);},
+                                        LinearGradient(
+                                          begin: Alignment.topRight,
+                                          end: Alignment.bottomLeft,
+                                          colors: [
+                                            Color(0xFFA00D00),
+                                            Color(0xFFA00D00),
+                                          ],
+                                        )
+                                            : LinearGradient(
+                                          begin: Alignment.topRight,
+                                          end: Alignment.bottomLeft,
+                                          colors: [
+                                            Color(0xFF296689),
+                                            Color(0xFF28639B),
+                                            Color(0xFF296689),
+                                          ],
+                                        ),
+                                        job: state.myList[index].jobName,
+                                        company: state.myList[index].company,
+                                        jobStartingDate: state.myList[index].startingDate,
+                                        jobCompletionDate: state.myList[index].completionDate,
+                                        jobStartingTime: state.myList[index].startingTime,
+                                        jobCompletionTime: state.myList[index].completionTime,
+                                        dayCount: state.myList[index].dayCount,
+                                        onPressed: (){
+                                          (LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)==state.myList[index].jobId) &&
+                                              (LocaleManager.instance.getStringValue(PreferencesKeys.jobAcceptStatus)=='1') ? null
 
-                                            );
+                                              :  (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.reserveJobId)||
+                                              (state.myList[index].jobId==LocaleManager.instance.getStringValue(PreferencesKeys.employeeJobId)))  ?
+                                          showDialog(
+                                              context: context,
+                                            builder: (BuildContext context){
+                                              return AlertDialogReserve(
+                                                title: '${LocaleKeys.jobEmployee_cancelReserveQuestion.locale}',
+                                                buttonTitle:'${LocaleKeys.jobEmployee_cancelReserve.locale}',
+                                                company:state.myList[index].company,
+                                                jobName: state.myList[index].jobName,
+                                                jobStartingDate: state.myList[index].startingDate,
+                                                jobCompletionDate: state.myList[index].completionDate,
+                                                jobStartingTime: state.myList[index].startingTime,
+                                                jobCompletionTime: state.myList[index].completionTime,
+                                                totalJobDay: state.myList[index].dayCount,
+                                                isLoading:false,
+                                                buttonColor: Colors.deepOrangeAccent,
+                                                onConfirm: () { context.read<JobEmployeeViewModel>().fetchCancelReservedJob(state.myList[index].jobId!);Navigator.pop(context);},
 
-                                          }
-                                        ):
-                                        state.myList[index].jobId !=null ?
-                                         showDialog(
-                                             context: context,
-                                             builder: (BuildContext context){
-                                               return AlertDialogReserve(
-                                                 title: '${LocaleKeys.jobEmployee_reserveQuestion.locale}',
-                                                 buttonTitle:'${LocaleKeys.jobEmployee_Reserve.locale}',
-                                                 company:state.myList[index].company,
-                                                 jobName: state.myList[index].jobName,
-                                                 jobStartingDate: state.myList[index].startingDate,
-                                                 jobCompletionDate: state.myList[index].completionDate,
-                                                 jobStartingTime: state.myList[index].startingTime,
-                                                 jobCompletionTime: state.myList[index].completionTime,
-                                                 totalJobDay: state.myList[index].dayCount,
-                                                 isLoading:false,
-                                                 buttonColor: Colors.green,
-                                                 onConfirm: () {context.read<JobEmployeeViewModel>().fetchCanBeReservedJob(state.myList[index].jobId!);Navigator.pop(context);},
+                                              );
 
-                                               );
-                                             }) : null;
+                                            }
+                                          ):
+                                          state.myList[index].jobId !=null ?
+                                           showDialog(
+                                               context: context,
+                                               builder: (BuildContext context){
+                                                 return AlertDialogReserve(
+                                                   title: '${LocaleKeys.jobEmployee_reserveQuestion.locale}',
+                                                   buttonTitle:'${LocaleKeys.jobEmployee_Reserve.locale}',
+                                                   company:state.myList[index].company,
+                                                   jobName: state.myList[index].jobName,
+                                                   jobStartingDate: state.myList[index].startingDate,
+                                                   jobCompletionDate: state.myList[index].completionDate,
+                                                   jobStartingTime: state.myList[index].startingTime,
+                                                   jobCompletionTime: state.myList[index].completionTime,
+                                                   totalJobDay: state.myList[index].dayCount,
+                                                   isLoading:false,
+                                                   buttonColor: Colors.green,
+                                                   onConfirm: () {context.read<JobEmployeeViewModel>().fetchCanBeReservedJob(state.myList[index].jobId!);Navigator.pop(context);},
 
-                                        print ("tıklandı");
-                                      },
-                                    ),
-                                  );
-                                },
-                              ) :
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                Row(
+                                                 );
+                                               }) : null;
+
+                                          print ("tıklandı");
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ) :
+                                Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                  Padding(padding:EdgeInsets.only(top:context.screenHeight/3) ,child: Center()),
-                                ],)
-                              ],),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                    Padding(padding:EdgeInsets.only(top:context.screenHeight/3) ,child: Center()),
+                                  ],)
+                                ],),
 
-                            ],
-                          );
-                        }
-                       else{
-                         return Center();
-                        }
-                        }
+                              ],
+                            );
+                          }
+                         else{
+                           return Center();
+                          }
+                          }
 
-                     ),
-                    ],
+                       ),
+                      ],
+                    ),
+
                   ),
-
                 ),
               ),
             ),

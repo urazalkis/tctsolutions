@@ -28,6 +28,7 @@ class ColorConstants {
         ],
       )
   );
+
   final registerBackgroundColor =  const BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.topCenter,

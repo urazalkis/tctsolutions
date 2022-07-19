@@ -7,6 +7,7 @@ import 'package:motaperp_tctsolutions/core/constant/app/app_constants.dart';
 import 'package:motaperp_tctsolutions/core/constant/app/url/url_icon/url_icon.dart';
 import 'package:motaperp_tctsolutions/core/constant/enum/locale_keys_enum.dart';
 import 'package:motaperp_tctsolutions/core/constant/navigation/navigation_constants.dart';
+import 'package:motaperp_tctsolutions/core/extension/string_extension.dart';
 import 'package:motaperp_tctsolutions/core/init/cache/locale_manager.dart';
 import 'package:motaperp_tctsolutions/core/init/language/language_manager.dart';
 import 'package:motaperp_tctsolutions/core/init/navigation/navigation_service.dart';
@@ -14,6 +15,7 @@ import 'package:motaperp_tctsolutions/core/widget/message/toast_message.dart';
 import 'package:motaperp_tctsolutions/product/model/register/register_model.dart';
 import 'package:motaperp_tctsolutions/view/authentication/login/login_model_response.dart';
 import 'package:motaperp_tctsolutions/view/authentication/login/login_service.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 import 'login_model.dart';
 class LoginViewModel extends ChangeNotifier implements IBaseViewModel{
   late GlobalKey<FormState> loginKey;
@@ -100,7 +102,7 @@ class LoginViewModel extends ChangeNotifier implements IBaseViewModel{
           changeLoading();
         }
         else if (response.success == 0) {
-          ToastMessage.instance.errorMessage(errorMessage: response.error!.message);
+          ToastMessage.instance.errorMessage(errorMessage:"${LocaleKeys.login_invalidUser.locale}!");
 
           notifyListeners();
           changeLoading();

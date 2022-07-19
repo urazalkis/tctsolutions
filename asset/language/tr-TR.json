@@ -31,7 +31,8 @@
         "logIn": "Giriş",
         "joinUs": "Bize katılmak için tıklayın",
         "joinUsBusiness": "Hizmet Almak İstiyorum",
-        "joinUsEmployee": "Çalışan Olmak İstiyorum"
+        "joinUsEmployee": "Çalışan Olmak İstiyorum",
+        "invalidUser": "Kullanıcı adı veya şifre yanlış"
     },
     "register": {
         "registerMe": "Kayıt Ol",

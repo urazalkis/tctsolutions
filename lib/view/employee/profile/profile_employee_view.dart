@@ -23,6 +23,7 @@ import 'package:provider/src/provider.dart';
 
 import '../../../core/constant/navigation/navigation_constants.dart';
 import '../../../core/init/navigation/navigation_service.dart';
+import '../../../product/widget/app_bar/app_bar_custom.dart';
 
 class ProfileEmployeeView extends StatelessWidget {
   const ProfileEmployeeView({Key? key}) : super(key: key);
@@ -37,257 +38,260 @@ class ProfileEmployeeView extends StatelessWidget {
 
       },
       onPageBuilder: (BuildContext context, ProfileEmployeeViewModel viewModel) => Scaffold(
+        appBar: AppBarCustom(title:LocaleKeys.profile.locale,),
         resizeToAvoidBottomInset: false,
-        body: WillPopScope(
-          onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-          child: BlocBuilder<ProfileEmployeeViewModel,IProfileEmployeeState>(
-            builder: (context,state){
-              if(state is ProfileInformationLoading)
-                {
-                  return CustomCircularProgressIndicator();
+        body: SafeArea(
+          child: WillPopScope(
+            onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
+            child: BlocBuilder<ProfileEmployeeViewModel,IProfileEmployeeState>(
+              builder: (context,state){
+                if(state is ProfileInformationLoading)
+                  {
+                    return CustomCircularProgressIndicator();
+                  }
+                else if(state is ProfileEmployeeError){
+                  return AlertDialogError(
+                    fontFamily: 'Bozon',
+                    text: LocaleKeys.errorMessage.locale,
+                    buttonText: LocaleKeys.okey.locale,
+                  );
                 }
-              else if(state is ProfileEmployeeError){
-                return AlertDialogError(
-                  fontFamily: 'Bozon',
-                  text: LocaleKeys.errorMessage.locale,
-                  buttonText: LocaleKeys.okey.locale,
-                );
-              }
-              else{
-                return SingleChildScrollView(
-                  child: Container(
-                    height: context.screenHeight*1.3,
-                    width: context.screenWidth*1.3,
-                    decoration: ColorConstants.instance.registerBackgroundColor,
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: context.screenWidth / 8,
-                            right: context.screenWidth / 8),
-                        child: BlocBuilder<
-                            ProfileEmployeeViewModel,
-                            IProfileEmployeeState>(
-                          builder: (context, state) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Flexible(
-                                  flex: 3,
-                                  child: FittedBox(
-                                    child: CircularPercentIndicator(
-                                      radius: 60.0,
-                                      lineWidth: 15,
-                                      animation: true,
-                                      animationDuration: 600,
-                                      percent: ((context
-                                          .read<ProfileEmployeeViewModel>()
-                                          .completedJobHour ?? 0 * 100) /
-                                          (context
-                                              .read<ProfileEmployeeViewModel>()
-                                              .totalJobHour ?? 0)),
-                                      animateFromLastPercent: true,
-                                      center: (context.read<ProfileEmployeeViewModel>().totalJobHour ?? 0) <=(context.read<ProfileEmployeeViewModel>().completedJobHour??0) ? Text('${LocaleKeys.profileEmployee_completed.locale}',style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0,),) :
-                                          Text("${context.read<ProfileEmployeeViewModel>().completedJobHour} ${LocaleKeys.profileEmployee_hours.locale} ${LocaleKeys.profileEmployee_completed.locale}",
-                                        textAlign: TextAlign.center,
-                                        maxLines: 3,
-                                        style: TextStyle(
+                else{
+                  return SingleChildScrollView(
+                    child: Container(
+                      height: context.screenHeight*1.3,
+                      width: context.screenWidth*1.3,
+                      decoration: ColorConstants.instance.registerBackgroundColor,
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: context.screenWidth / 8,
+                              right: context.screenWidth / 8),
+                          child: BlocBuilder<
+                              ProfileEmployeeViewModel,
+                              IProfileEmployeeState>(
+                            builder: (context, state) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Flexible(
+                                    flex: 3,
+                                    child: FittedBox(
+                                      child: CircularPercentIndicator(
+                                        radius: 60.0,
+                                        lineWidth: 15,
+                                        animation: true,
+                                        animationDuration: 600,
+                                        percent: ((context
+                                            .read<ProfileEmployeeViewModel>()
+                                            .completedJobHour ?? 0 * 100) /
+                                            (context
+                                                .read<ProfileEmployeeViewModel>()
+                                                .totalJobHour ?? 0)),
+                                        animateFromLastPercent: true,
+                                        center: (context.read<ProfileEmployeeViewModel>().totalJobHour ?? 0) <=(context.read<ProfileEmployeeViewModel>().completedJobHour??0) ? Text('${LocaleKeys.profileEmployee_completed.locale}',style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,),
-                                      ),
-                                      circularStrokeCap: CircularStrokeCap.round,
-                                      progressColor: ColorConstants.instance
-                                          .customBlueColor,
-                                      header: Text('${context
-                                          .read<ProfileEmployeeViewModel>()
-                                          .totalJobHour} ${LocaleKeys
-                                          .profileEmployee_hours.locale}',
-                                        style: TextStyle(
+                                          fontSize: 16.0,),) :
+                                            Text("${context.read<ProfileEmployeeViewModel>().completedJobHour} ${LocaleKeys.profileEmployee_hours.locale} ${LocaleKeys.profileEmployee_completed.locale}",
+                                          textAlign: TextAlign.center,
+                                          maxLines: 3,
+                                          style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16.0),),
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: LanguagePopupMenu(
-                                      selectedValue: context
-                                          .watch<LoginViewModel>()
-                                          .selectedLanguage,
-                                      color: ColorConstants.instance
-                                          .customBlueColor,
-                                      onChanged: (selectedValue) async {
-                                        await selectedValue == 1
-                                            ? context.setLocale(
-                                            LanguageManager.instance.enLocale)
-                                            : selectedValue == 3 ? context
-                                            .setLocale(
-                                            LanguageManager.instance.trLocale)
-                                            : selectedValue == 2
-                                            ? context.setLocale(
-                                            LanguageManager.instance.gerLocale)
-                                            : context.setLocale(
-                                            LanguageManager.instance.trLocale);
-                                        context.read<LoginViewModel>()
-                                            .changeSelectedLanguage(
-                                            selectedValue!);
-                                        //
-                                      }, initialValue: context
-                                        .read<LoginViewModel>()
-                                        .selectedLanguageValue,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 12,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      TextFormFieldProfile(enabled: false,
-                                        labelText: LocaleKeys
-                                            .register_employee_name
-                                            .locale,
-                                        hintText: "${LocaleManager.instance
-                                            .getStringValue(
-                                            PreferencesKeys.title)}",),
-                                      TextFormFieldProfile(enabled: false,
-                                        labelText: LocaleKeys
-                                            .register_employee_tel
-                                            .locale,
-                                        hintText: "${LocaleManager.instance
-                                            .getStringValue(
-                                            PreferencesKeys.phoneEmployee)}",),
-                                      TextFormFieldProfile(enabled: false,
-                                        labelText: LocaleKeys
-                                            .register_employee_profession.locale,
-                                        hintText: "${LocaleManager.instance
-                                            .getStringValue(
-                                            PreferencesKeys.profession)}",),
-                                      TextFormFieldProfileAuthenticate(
-                                        tfController: context
+                                            fontSize: 16.0,),
+                                        ),
+                                        circularStrokeCap: CircularStrokeCap.round,
+                                        progressColor: ColorConstants.instance
+                                            .customBlueColor,
+                                        header: Text('${context
                                             .read<ProfileEmployeeViewModel>()
-                                            .userNameController,
-                                        tf1Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf1Controller,
-                                        tf2Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf2Controller,
-                                        tf3Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf3Controller,
-                                        textField1Hint: LocaleKeys
-                                            .login_userName.locale,
-                                        textField2Hint: LocaleKeys
-                                            .profileBusiness_newUserName
-                                            .locale,
-                                        textField3Hint: LocaleKeys
-                                            .profileBusiness_newUserNameAgain
-                                            .locale,
-                                        labelText: LocaleKeys.login_userName
-                                            .locale,
-                                        changeEditingState: () {
-                                          context
-                                              .read<
-                                              ProfileEmployeeViewModel>()
-                                              .isEditingPassword != true
-                                              ?
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .changeUserNameEditState()
-                                              : null;
-                                        },
-                                        changeObscureState: () {
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .changeObscureState();
-                                        },
-                                        isEditing: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .isEditingUserName,
-                                        isAuthenticateTextObscure: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .isObscure,
-                                        isLoading: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .isUpdateLoading,
-                                        onPressedChange: () {
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .fetchUpdateResult(
-                                              'userName');
-                                        },
+                                            .totalJobHour} ${LocaleKeys
+                                            .profileEmployee_hours.locale}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16.0),),
                                       ),
-                                      TextFormFieldProfileAuthenticate(
-                                        tfController: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .passwordController,
-                                        tf1Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf1Controller,
-                                        tf2Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf2Controller,
-                                        tf3Controller: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .tf3Controller,
-                                        textField1Hint: LocaleKeys
-                                            .login_password.locale,
-                                        textField2Hint: LocaleKeys
-                                            .profileBusiness_newPassword.locale,
-                                        textField3Hint: LocaleKeys
-                                            .profileBusiness_newPasswordAgain
-                                            .locale,
-                                        labelText: LocaleKeys.login_password
-                                            .locale,
-                                        changeEditingState: () {
-                                          context
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: LanguagePopupMenu(
+                                        selectedValue: context
+                                            .watch<LoginViewModel>()
+                                            .selectedLanguage,
+                                        color: ColorConstants.instance
+                                            .customBlueColor,
+                                        onChanged: (selectedValue) async {
+                                          await selectedValue == 1
+                                              ? context.setLocale(
+                                              LanguageManager.instance.enLocale)
+                                              : selectedValue == 3 ? context
+                                              .setLocale(
+                                              LanguageManager.instance.trLocale)
+                                              : selectedValue == 2
+                                              ? context.setLocale(
+                                              LanguageManager.instance.gerLocale)
+                                              : context.setLocale(
+                                              LanguageManager.instance.trLocale);
+                                          context.read<LoginViewModel>()
+                                              .changeSelectedLanguage(
+                                              selectedValue!);
+                                          //
+                                        }, initialValue: context
+                                          .read<LoginViewModel>()
+                                          .selectedLanguageValue,
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 12,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        TextFormFieldProfile(enabled: false,
+                                          labelText: LocaleKeys
+                                              .register_employee_name
+                                              .locale,
+                                          hintText: "${LocaleManager.instance
+                                              .getStringValue(
+                                              PreferencesKeys.title)}",),
+                                        TextFormFieldProfile(enabled: false,
+                                          labelText: LocaleKeys
+                                              .register_employee_tel
+                                              .locale,
+                                          hintText: "${LocaleManager.instance
+                                              .getStringValue(
+                                              PreferencesKeys.phoneEmployee)}",),
+                                        TextFormFieldProfile(enabled: false,
+                                          labelText: LocaleKeys
+                                              .register_employee_profession.locale,
+                                          hintText: "${LocaleManager.instance
+                                              .getStringValue(
+                                              PreferencesKeys.profession)}",),
+                                        TextFormFieldProfileAuthenticate(
+                                          tfController: context
                                               .read<ProfileEmployeeViewModel>()
-                                              .isEditingUserName != true ?
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .changePasswordEditState() : null;
-                                        },
-                                        changeObscureState: () {
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .changeObscureState();
-                                        },
-                                        isEditing: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .isEditingPassword,
-                                        isAuthenticateTextObscure: context
-                                            .read<ProfileEmployeeViewModel>()
-                                            .isObscure,
-                                        isLoading: context
-                                            .watch<ProfileEmployeeViewModel>()
-                                            .isUpdateLoading,
-                                        onPressedChange: () {
-                                          context.read<
-                                              ProfileEmployeeViewModel>()
-                                              .fetchUpdateResult(
-                                              'password');
-                                        },
-                                      ),
-                                    ],
+                                              .userNameController,
+                                          tf1Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf1Controller,
+                                          tf2Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf2Controller,
+                                          tf3Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf3Controller,
+                                          textField1Hint: LocaleKeys
+                                              .login_userName.locale,
+                                          textField2Hint: LocaleKeys
+                                              .profileBusiness_newUserName
+                                              .locale,
+                                          textField3Hint: LocaleKeys
+                                              .profileBusiness_newUserNameAgain
+                                              .locale,
+                                          labelText: LocaleKeys.login_userName
+                                              .locale,
+                                          changeEditingState: () {
+                                            context
+                                                .read<
+                                                ProfileEmployeeViewModel>()
+                                                .isEditingPassword != true
+                                                ?
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .changeUserNameEditState()
+                                                : null;
+                                          },
+                                          changeObscureState: () {
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .changeObscureState();
+                                          },
+                                          isEditing: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .isEditingUserName,
+                                          isAuthenticateTextObscure: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .isObscure,
+                                          isLoading: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .isUpdateLoading,
+                                          onPressedChange: () {
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .fetchUpdateResult(
+                                                'userName');
+                                          },
+                                        ),
+                                        TextFormFieldProfileAuthenticate(
+                                          tfController: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .passwordController,
+                                          tf1Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf1Controller,
+                                          tf2Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf2Controller,
+                                          tf3Controller: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .tf3Controller,
+                                          textField1Hint: LocaleKeys
+                                              .login_password.locale,
+                                          textField2Hint: LocaleKeys
+                                              .profileBusiness_newPassword.locale,
+                                          textField3Hint: LocaleKeys
+                                              .profileBusiness_newPasswordAgain
+                                              .locale,
+                                          labelText: LocaleKeys.login_password
+                                              .locale,
+                                          changeEditingState: () {
+                                            context
+                                                .read<ProfileEmployeeViewModel>()
+                                                .isEditingUserName != true ?
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .changePasswordEditState() : null;
+                                          },
+                                          changeObscureState: () {
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .changeObscureState();
+                                          },
+                                          isEditing: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .isEditingPassword,
+                                          isAuthenticateTextObscure: context
+                                              .read<ProfileEmployeeViewModel>()
+                                              .isObscure,
+                                          isLoading: context
+                                              .watch<ProfileEmployeeViewModel>()
+                                              .isUpdateLoading,
+                                          onPressedChange: () {
+                                            context.read<
+                                                ProfileEmployeeViewModel>()
+                                                .fetchUpdateResult(
+                                                'password');
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
 
-                              ],
-                            );
+                                ],
+                              );
 
-                          },
+                            },
+                          ),
+
+
                         ),
-
-
                       ),
                     ),
-                  ),
-                );
+                  );
+                }
               }
-            }
+            ),
           ),
         ),
       ),

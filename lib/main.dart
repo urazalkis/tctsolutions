@@ -40,6 +40,10 @@ Future<void> _init() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
     SystemUiOverlay.bottom,
   ]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   await LocaleManager.instance.preferencesInit();
   await EasyLocalization.ensureInitialized();
 

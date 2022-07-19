@@ -31,7 +31,8 @@
     "logIn": "Anmeldung",
     "joinUs": "Sie möchten mit uns zusammenarbeiten?",
     "joinUsBusiness": "Ich möchte Service bekommen",
-    "joinUsEmployee": "Ich möchte Mitarbeiter werden"
+    "joinUsEmployee": "Ich möchte Mitarbeiter werden",
+    "invalidUser": "Ungültiger Benutzername oder Passwort"
   },
   "register": {
     "registerMe": "Registrieren",

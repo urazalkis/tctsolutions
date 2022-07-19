@@ -33,6 +33,7 @@ abstract class  LocaleKeys {
   static const login_joinUs = 'login.joinUs';
   static const login_joinUsBusiness = 'login.joinUsBusiness';
   static const login_joinUsEmployee = 'login.joinUsEmployee';
+  static const login_invalidUser = 'login.invalidUser';
   static const login = 'login';
   static const register_registerMe = 'register.registerMe';
   static const register_registerSuccess = 'register.registerSuccess';

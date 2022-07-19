@@ -31,144 +31,146 @@ class EmployeeBusinessDetailView extends StatelessWidget {
       },
       onPageBuilder: (BuildContext context, EmployeeBusinessDetailViewModel viewModel) => Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Container(
-          height: context.screenHeight,
-          width:  context.screenWidth,
-          decoration: ColorConstants.instance.appBackgroundBlueColor,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(left:context.screenWidth/50,right: context.screenWidth/50,top: 20),
-              child:Column(
-                children: [
-                  Row(
-                    children: [
-                      Spacer(),
-                      ImageWidget(iconUrl: UrlIcon.instance.appLogoUrl, height: context.screenHeight/15),
-                    ],
-                  ),
-                  FittedBox(
-                    child: SizedBox(
-                      height: context.screenHeight/10,
-                      width:context.screenWidth,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          FittedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("${LocaleKeys.register_employee_name.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),maxLines: 2,),
-                                Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeName}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
-                              ],
+        body: SafeArea(
+          child: Container(
+            height: context.screenHeight,
+            width:  context.screenWidth,
+            decoration: ColorConstants.instance.appBackgroundBlueColor,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(left:context.screenWidth/50,right: context.screenWidth/50,top: 20),
+                child:Column(
+                  children: [
+                    Row(
+                      children: [
+                        Spacer(),
+                        ImageWidget(iconUrl: UrlIcon.instance.appLogoUrl, height: context.screenHeight/15),
+                      ],
+                    ),
+                    FittedBox(
+                      child: SizedBox(
+                        height: context.screenHeight/10,
+                        width:context.screenWidth,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FittedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("${LocaleKeys.register_employee_name.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),maxLines: 2,),
+                                  Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeName}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
+                                ],
+                              ),
                             ),
-                          ),
-                          FittedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("${LocaleKeys.register_employee_tel.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
-                                Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeePhone}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
-                              ],
+                            FittedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("${LocaleKeys.register_employee_tel.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
+                                  Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeePhone}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
+                                ],
+                              ),
                             ),
-                          ),
-                          FittedBox(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
-                                Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeProfession}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
-                              ],
+                            FittedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
+                                  Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeProfession}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  BlocBuilder<EmployeeBusinessDetailViewModel,IEmployeeBusinessDetailState>(
-                      builder: (context, state) {
-                        if (state is EmployeeBusinessDetailLoading) {
-                          return Padding(padding:EdgeInsets.only(top:context.screenHeight/3),child: CustomCircularProgressIndicator());
-                        }
-                        else if(state is EmployeeBusinessDetailLoaded){
-                          return ListView(
-                            shrinkWrap: true,
-                            children:[
-                              SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                child: CustomDataTable(
-                                  dividerThickness: 2,
-                                  headingTextStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Bozon',
-                                      color: Colors.black
-                                  ),
-                                  dataTextStyle: TextStyle(
-                                    fontFamily: 'Bozon',
-                                    color: Colors.white
-                                  ),
-                                  dataList: state.myList ?? [],
-                                  columns:<DataColumn>[
-                                    DataColumn(
-                                      label: Text(
-                                        "${LocaleKeys.date.locale}",
-                                        maxLines: 3,
-                                      ),
+                    BlocBuilder<EmployeeBusinessDetailViewModel,IEmployeeBusinessDetailState>(
+                        builder: (context, state) {
+                          if (state is EmployeeBusinessDetailLoading) {
+                            return Padding(padding:EdgeInsets.only(top:context.screenHeight/3),child: CustomCircularProgressIndicator());
+                          }
+                          else if(state is EmployeeBusinessDetailLoaded){
+                            return ListView(
+                              shrinkWrap: true,
+                              children:[
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  child: CustomDataTable(
+                                    dividerThickness: 2,
+                                    headingTextStyle: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Bozon',
+                                        color: Colors.black
                                     ),
-                                    DataColumn(
-                                        label: Text("${LocaleKeys.jobBusiness_minTime.locale}",
+                                    dataTextStyle: TextStyle(
+                                      fontFamily: 'Bozon',
+                                      color: Colors.white
+                                    ),
+                                    dataList: state.myList ?? [],
+                                    columns:<DataColumn>[
+                                      DataColumn(
+                                        label: Text(
+                                          "${LocaleKeys.date.locale}",
                                           maxLines: 3,
-                                        )
-                                    ),
-                                    DataColumn(
-                                        label: Text("${LocaleKeys.jobBusiness_maxTime.locale}",
-                                          maxLines: 3,)
-                                    ),
-
-                                  ],
-                                  rows: List<DataRow>.generate(
-                                      state.myList!.length,
-                                          (index) =>
-                                          DataRow(
-                                              onSelectChanged: (a) {
-                                                print("tıklandı");
-                                              },
-                                              cells: [
-                                                DataCell(Text(
-                                                    "${state.myList![index]
-                                                        .date ?? ''}"),),
-                                                DataCell(Text(
-                                                    "${state.myList![index]
-                                                        .startingTime ?? ''}"),),
-                                                DataCell(Text(
-                                                    "${state.myList![index]
-                                                        .completionTime ?? ''}")),
-                                              ]
+                                        ),
+                                      ),
+                                      DataColumn(
+                                          label: Text("${LocaleKeys.jobBusiness_minTime.locale}",
+                                            maxLines: 3,
                                           )
+                                      ),
+                                      DataColumn(
+                                          label: Text("${LocaleKeys.jobBusiness_maxTime.locale}",
+                                            maxLines: 3,)
+                                      ),
+
+                                    ],
+                                    rows: List<DataRow>.generate(
+                                        state.myList!.length,
+                                            (index) =>
+                                            DataRow(
+                                                onSelectChanged: (a) {
+                                                  print("tıklandı");
+                                                },
+                                                cells: [
+                                                  DataCell(Text(
+                                                      "${state.myList![index]
+                                                          .date ?? ''}"),),
+                                                  DataCell(Text(
+                                                      "${state.myList![index]
+                                                          .startingTime ?? ''}"),),
+                                                  DataCell(Text(
+                                                      "${state.myList![index]
+                                                          .completionTime ?? ''}")),
+                                                ]
+                                            )
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
 
-                          );
+                            );
 
+                          }
+                          else if(state is EmployeeBusinessDetailError){
+                            print("zortladı");
+                            return Center();
+                          }
+                          else{
+                            return Center();
+                          }
                         }
-                        else if(state is EmployeeBusinessDetailError){
-                          print("zortladı");
-                          return Center();
-                        }
-                        else{
-                          return Center();
-                        }
-                      }
 
-                  ),
-                ],
+                    ),
+                  ],
+                ),
+
               ),
-
             ),
           ),
         ),

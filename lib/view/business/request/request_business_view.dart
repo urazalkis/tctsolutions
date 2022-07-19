@@ -1,6 +1,5 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:motaperp_tctsolutions/core/base/view/base_view.dart';
@@ -17,9 +16,9 @@ import 'package:motaperp_tctsolutions/core/widget/text_field/text_form_field_exp
 import 'package:motaperp_tctsolutions/core/widget/text_field/text_form_field_register.dart';
 import 'package:motaperp_tctsolutions/view/business/request/request_business_view_model.dart';
 import 'package:provider/src/provider.dart';
-
 import '../../../core/constant/navigation/navigation_constants.dart';
 import '../../../core/init/navigation/navigation_service.dart';
+import '../../../product/widget/app_bar/app_bar_custom.dart';
 
 class RequestBusinessView extends StatelessWidget {
   const RequestBusinessView({Key? key}) : super(key: key);
@@ -33,47 +32,33 @@ class RequestBusinessView extends StatelessWidget {
         context.read<RequestBusinessViewModel>().init();
       },
       onPageBuilder: (BuildContext context, RequestBusinessViewModel viewModel) => Scaffold(
+        appBar: AppBarCustom(title:LocaleKeys.newrequest.locale,),
         resizeToAvoidBottomInset: false,
-        body: WillPopScope(
-          onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-          child: Container(
-            height: context.screenHeight,
-            width:  context.screenWidth,
-            decoration: ColorConstants.instance.registerBackgroundColor,
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(left:context.screenWidth/8,right: context.screenWidth/8),
-                child:Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SafeArea(
+          child: WillPopScope(
+            onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
+            child: SingleChildScrollView(
+              child: Container(
+                height: context.screenHeight/1.22,
+                width:  context.screenWidth,
+                decoration: ColorConstants.instance.registerBackgroundColor,
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(left:context.screenWidth/8,right: context.screenWidth/8),
+                    child:Form(
+                      key: context.watch<RequestBusinessViewModel>().formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text('${LocaleKeys.requestBusiness_jobRequestForm.locale}',style: TextStyle(fontFamily: 'Bozon',fontSize:12,fontWeight: FontWeight.bold),),
-                          ImageWidget(iconUrl: UrlIcon.instance.appLogo2Url, height: context.screenHeight/15),
+                          TextFormFieldRegister(
+                            validator: true,
+                            width:250,hintText:'${LocaleKeys.requestBusiness_employeeCount.locale}',tfController:context.watch<RequestBusinessViewModel>().employeeCountController,
+                            keyboardType: TextInputType.number,
 
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      flex: 10,
-                      child: Form(
-                        key: context.watch<RequestBusinessViewModel>().formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            TextFormFieldRegister(
-                              validator: true,
-                              width:250,hintText:'${LocaleKeys.requestBusiness_employeeCount.locale}',tfController:context.watch<RequestBusinessViewModel>().employeeCountController,
-                              keyboardType: TextInputType.number,
-
-                            ),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
                               DatePickerCustom(
                                 locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
                                 labelText:LocaleKeys.requestBusiness_pickMinDate.locale,
@@ -92,9 +77,9 @@ class RequestBusinessView extends StatelessWidget {
                                 },
                               ),
                             ],),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
                               TimePickerCustom(
                                 locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
                                 labelText:LocaleKeys.requestBusiness_pickMinTime.locale,
@@ -112,23 +97,18 @@ class RequestBusinessView extends StatelessWidget {
                                 },
                               ),
                             ],
-                            ),
-
-
-                            TextFormFieldExplanation(
-                              hintText:LocaleKeys.register_employee_explanation.locale,
-                              tfController:context.watch<RequestBusinessViewModel>().explanationController,upLabel: true,),
-
-
-                            ElevatedCircularLoginButton(width:context.screenWidth/3, onPressed:(){context.read<RequestBusinessViewModel>().fetchRequestService();},
-                              title: "${LocaleKeys.requestBusiness_send.locale}",primaryColor:ColorConstants.instance.customBlue2Color,isLoading: context.watch<RequestBusinessViewModel>().isLoading,),
-                          ],
-                        ),
+                          ),
+                          TextFormFieldExplanation(
+                            hintText:LocaleKeys.register_employee_explanation.locale,
+                            tfController:context.watch<RequestBusinessViewModel>().explanationController,upLabel: true,),
+                          ElevatedCircularLoginButton(width:context.screenWidth/3, onPressed:(){context.read<RequestBusinessViewModel>().fetchRequestService();},
+                            title: "${LocaleKeys.requestBusiness_send.locale}",primaryColor:ColorConstants.instance.customBlue2Color,isLoading: context.watch<RequestBusinessViewModel>().isLoading,),
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                    ),
 
+                  ),
+                ),
               ),
             ),
           ),
