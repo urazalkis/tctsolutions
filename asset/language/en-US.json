@@ -25,6 +25,7 @@
     "noConnectionExplanation": "Internet connection failed.Please check your network",
     "detail": "Detail",
     "call": "Call",
+    "update": "Update",
     "login": {
         "userName": "User Name",
         "password": "Password",

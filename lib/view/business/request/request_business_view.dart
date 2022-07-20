@@ -34,84 +34,88 @@ class RequestBusinessView extends StatelessWidget {
       onPageBuilder: (BuildContext context, RequestBusinessViewModel viewModel) => Scaffold(
         appBar: AppBarCustom(title:LocaleKeys.newrequest.locale,),
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: WillPopScope(
-            onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-            child: SingleChildScrollView(
-              child: Container(
-                height: context.screenHeight/1.22,
-                width:  context.screenWidth,
-                decoration: ColorConstants.instance.registerBackgroundColor,
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(left:context.screenWidth/8,right: context.screenWidth/8),
-                    child:Form(
-                      key: context.watch<RequestBusinessViewModel>().formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextFormFieldRegister(
-                            validator: true,
-                            width:250,hintText:'${LocaleKeys.requestBusiness_employeeCount.locale}',tfController:context.watch<RequestBusinessViewModel>().employeeCountController,
-                            keyboardType: TextInputType.number,
+        body: LayoutBuilder(
+          builder: (BuildContext context,BoxConstraints constraints){
+            return SafeArea(
+              child: WillPopScope(
+                onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
+                child: SingleChildScrollView(
+                  child: Container(
+                    height:constraints.maxWidth<480 ? context.screenHeight/1.22 : context.screenHeight,
+                    width:  context.screenWidth,
+                    decoration: ColorConstants.instance.registerBackgroundColor,
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(left:context.screenWidth/8,right: context.screenWidth/8),
+                        child:Form(
+                          key: context.watch<RequestBusinessViewModel>().formKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              TextFormFieldRegister(
+                                validator: true,
+                                width:250,hintText:'${LocaleKeys.requestBusiness_employeeCount.locale}',tfController:context.watch<RequestBusinessViewModel>().employeeCountController,
+                                keyboardType: TextInputType.number,
 
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              DatePickerCustom(
-                                locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
-                                labelText:LocaleKeys.requestBusiness_pickMinDate.locale,
-                                selectedDate:context.watch<RequestBusinessViewModel>().selectedDateMin,
-                                onConfirm: (selectedDate){
-                                  context.read<RequestBusinessViewModel>().changeSelectedDateMin(selectedDate);
-                                },
                               ),
-                              DatePickerCustom(
-                                locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
-                                labelText:LocaleKeys.requestBusiness_pickMaxDate.locale,
-                                selectedDate:context.watch<RequestBusinessViewModel>().selectedDateMax,
-                                onConfirm: (selectedDate){
-                                  context.read<RequestBusinessViewModel>().changeSelectedDateMax(selectedDate);
-                                  print("max date ${context.read<RequestBusinessViewModel>().selectedDateMax}");
-                                },
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  DatePickerCustom(
+                                    locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
+                                    labelText:LocaleKeys.requestBusiness_pickMinDate.locale,
+                                    selectedDate:context.watch<RequestBusinessViewModel>().selectedDateMin,
+                                    onConfirm: (selectedDate){
+                                      context.read<RequestBusinessViewModel>().changeSelectedDateMin(selectedDate);
+                                    },
+                                  ),
+                                  DatePickerCustom(
+                                    locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
+                                    labelText:LocaleKeys.requestBusiness_pickMaxDate.locale,
+                                    selectedDate:context.watch<RequestBusinessViewModel>().selectedDateMax,
+                                    onConfirm: (selectedDate){
+                                      context.read<RequestBusinessViewModel>().changeSelectedDateMax(selectedDate);
+                                      print("max date ${context.read<RequestBusinessViewModel>().selectedDateMax}");
+                                    },
+                                  ),
+                                ],),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  TimePickerCustom(
+                                    locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
+                                    labelText:LocaleKeys.requestBusiness_pickMinTime.locale,
+                                    selectedDate:context.watch<RequestBusinessViewModel>().selectedTimeMin,
+                                    onConfirm: (selectedTime){
+                                      context.read<RequestBusinessViewModel>().changeSelectedTimeMin(selectedTime);
+                                    },
+                                  ),
+                                  TimePickerCustom(
+                                    locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
+                                    labelText:LocaleKeys.requestBusiness_pickMaxTime.locale,
+                                    selectedDate:context.watch<RequestBusinessViewModel>().selectedTimeMax,
+                                    onConfirm: (selectedTime){
+                                      context.read<RequestBusinessViewModel>().changeSelectedTimeMax(selectedTime);
+                                    },
+                                  ),
+                                ],
                               ),
-                            ],),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              TimePickerCustom(
-                                locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
-                                labelText:LocaleKeys.requestBusiness_pickMinTime.locale,
-                                selectedDate:context.watch<RequestBusinessViewModel>().selectedTimeMin,
-                                onConfirm: (selectedTime){
-                                  context.read<RequestBusinessViewModel>().changeSelectedTimeMin(selectedTime);
-                                },
-                              ),
-                              TimePickerCustom(
-                                locale: context.locale.languageCode=='tr' ? LocaleType.tr : context.locale.languageCode=='en' ? LocaleType.en : context.locale.languageCode=='de' ? LocaleType.de : LocaleType.en,
-                                labelText:LocaleKeys.requestBusiness_pickMaxTime.locale,
-                                selectedDate:context.watch<RequestBusinessViewModel>().selectedTimeMax,
-                                onConfirm: (selectedTime){
-                                  context.read<RequestBusinessViewModel>().changeSelectedTimeMax(selectedTime);
-                                },
-                              ),
+                              TextFormFieldExplanation(
+                                hintText:LocaleKeys.register_employee_explanation.locale,
+                                tfController:context.watch<RequestBusinessViewModel>().explanationController,upLabel: true,),
+                              ElevatedCircularLoginButton(width:context.screenWidth/3, onPressed:(){context.read<RequestBusinessViewModel>().fetchRequestService();},
+                                title: "${LocaleKeys.requestBusiness_send.locale}",primaryColor:ColorConstants.instance.customBlue2Color,isLoading: context.watch<RequestBusinessViewModel>().isLoading,),
                             ],
                           ),
-                          TextFormFieldExplanation(
-                            hintText:LocaleKeys.register_employee_explanation.locale,
-                            tfController:context.watch<RequestBusinessViewModel>().explanationController,upLabel: true,),
-                          ElevatedCircularLoginButton(width:context.screenWidth/3, onPressed:(){context.read<RequestBusinessViewModel>().fetchRequestService();},
-                            title: "${LocaleKeys.requestBusiness_send.locale}",primaryColor:ColorConstants.instance.customBlue2Color,isLoading: context.watch<RequestBusinessViewModel>().isLoading,),
-                        ],
+                        ),
+
                       ),
                     ),
-
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          }
         ),
       ),
     );

@@ -25,6 +25,7 @@
     "noConnectionExplanation": "İnternet bağlantısı sağlanamadı.Lütfen ağınızı kontrol ediniz",
     "detail": "Detay",
     "call": "Ara",
+    "update": "Güncelle",
     "login": {
         "userName": "Kullanıcı Adı",
         "password": "Şifre",

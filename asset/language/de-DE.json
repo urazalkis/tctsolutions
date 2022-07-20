@@ -25,6 +25,7 @@
   "noConnectionExplanation": "Internetverbindung fehlgeschlagen. Bitte überprüfen Sie Ihr Netzwerk",
   "detail": "Detail",
   "call": "Anruf",
+  "update": "Aktualisieren",
   "login": {
     "userName": "Nutzername",
     "password": "Passwort",

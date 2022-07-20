@@ -172,7 +172,7 @@ class TextFormFieldProfileAuthenticate extends StatelessWidget {
                       width:context.screenWidth/3,
                       //primaryColor:ColorConstants.instance.customBlueColor,
                       primaryColor:Colors.green,
-                      title: "Change",
+                      title: "${LocaleKeys.update.locale}",
                     onPressed:  isLoading ? null : onPressedChange,
                       isLoading: isLoading,
                   ),
