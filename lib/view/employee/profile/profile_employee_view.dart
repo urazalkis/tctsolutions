@@ -40,15 +40,17 @@ class ProfileEmployeeView extends StatelessWidget {
       onPageBuilder: (BuildContext context, ProfileEmployeeViewModel viewModel) => Scaffold(
         appBar: AppBarCustom(title:LocaleKeys.profile.locale,),
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: WillPopScope(
-            onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-            child: BlocBuilder<ProfileEmployeeViewModel,IProfileEmployeeState>(
+        body: LayoutBuilder(
+    builder: (BuildContext context,BoxConstraints constraints){
+      return SafeArea(
+        child: WillPopScope(
+          onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
+          child: BlocBuilder<ProfileEmployeeViewModel,IProfileEmployeeState>(
               builder: (context,state){
                 if(state is ProfileInformationLoading)
-                  {
-                    return CustomCircularProgressIndicator();
-                  }
+                {
+                  return CustomCircularProgressIndicator();
+                }
                 else if(state is ProfileEmployeeError){
                   return AlertDialogError(
                     fontFamily: 'Bozon',
@@ -59,8 +61,12 @@ class ProfileEmployeeView extends StatelessWidget {
                 else{
                   return SingleChildScrollView(
                     child: Container(
-                      height: context.screenHeight*1.3,
-                      width: context.screenWidth*1.3,
+                      constraints: BoxConstraints(
+                        maxHeight: double.infinity
+                      ),
+                      height:constraints.maxHeight<411 ? context.screenHeight*1.4 : constraints.maxHeight<470 ? context.screenHeight*1.3 :
+                      constraints.maxHeight<596 ? context.screenHeight*1.15 : context.screenHeight,
+                      width: context.screenWidth,
                       decoration: ColorConstants.instance.registerBackgroundColor,
                       child: Center(
                         child: Padding(
@@ -91,7 +97,7 @@ class ProfileEmployeeView extends StatelessWidget {
                                         center: (context.read<ProfileEmployeeViewModel>().totalJobHour ?? 0) <=(context.read<ProfileEmployeeViewModel>().completedJobHour??0) ? Text('${LocaleKeys.profileEmployee_completed.locale}',style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16.0,),) :
-                                            Text("${context.read<ProfileEmployeeViewModel>().completedJobHour} ${LocaleKeys.profileEmployee_hours.locale} ${LocaleKeys.profileEmployee_completed.locale}",
+                                        Text("${context.read<ProfileEmployeeViewModel>().completedJobHour} ${LocaleKeys.profileEmployee_hours.locale} ${LocaleKeys.profileEmployee_completed.locale}",
                                           textAlign: TextAlign.center,
                                           maxLines: 3,
                                           style: TextStyle(
@@ -291,8 +297,10 @@ class ProfileEmployeeView extends StatelessWidget {
                   );
                 }
               }
-            ),
           ),
+        ),
+      );
+    }
         ),
       ),
     );

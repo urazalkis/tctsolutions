@@ -28,6 +28,7 @@ abstract class  LocaleKeys {
   static const detail = 'detail';
   static const call = 'call';
   static const update = 'update';
+  static const logout = 'logout';
   static const login_userName = 'login.userName';
   static const login_password = 'login.password';
   static const login_logIn = 'login.logIn';

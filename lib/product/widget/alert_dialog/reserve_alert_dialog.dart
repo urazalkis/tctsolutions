@@ -53,55 +53,67 @@ class AlertDialogReserve extends StatelessWidget {
 
       ],
       shape: OutlineInputBorder(borderRadius:BorderConstant.instance.radiusAllCircularMedium),
-      content:  SizedBox(
-        height: context.screenHeight/8,
-        width:context.screenWidth,
-        child: FittedBox(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${LocaleKeys.company.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$company",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),maxLines: 2,),
-                  Text("$jobName",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${LocaleKeys.jobBusiness_minDate.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$jobStartingDate",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                  Text("${LocaleKeys.jobBusiness_maxDate.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$jobCompletionDate",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${LocaleKeys.jobBusiness_minTime.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$jobStartingTime",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("${LocaleKeys.jobBusiness_maxTime.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$jobCompletionTime",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${LocaleKeys.jobBusiness_dayCount.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
-                  Text("$totalJobDay",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
-                ],
-              ),
-            ],
-          ),
+      content:  Container(
+       /* height: context.screenHeight,
+        width:context.screenWidth,*/
+        constraints: BoxConstraints(
+            maxHeight: double.infinity
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.company.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Flexible(child: Text(" $company",style: TextStyle(fontFamily: 'bozon',color: Colors.black),overflow: TextOverflow.ellipsis,)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),maxLines: 2,),
+                Flexible(child: Text(" $jobName",style: TextStyle(fontFamily: 'bozon',color: Colors.black),overflow: TextOverflow.ellipsis,)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_minDate.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Text(" $jobStartingDate",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_maxDate.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Text(" $jobCompletionDate",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_minTime.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Text(" $jobStartingTime",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_maxTime.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Text(" $jobCompletionTime",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${LocaleKeys.jobBusiness_dayCount.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.black),),
+                Text(" $totalJobDay",style: TextStyle(fontFamily: 'bozon',color: Colors.black),),
+              ],
+            ),
+          ],
         ),
       ),
     );

@@ -26,11 +26,12 @@
     "detail": "Detay",
     "call": "Ara",
     "update": "Güncelle",
+    "logout": "Çıkış",
     "login": {
         "userName": "Kullanıcı Adı",
         "password": "Şifre",
         "logIn": "Giriş",
-        "joinUs": "Bize katılmak için tıklayın",
+        "joinUs": "Bize katılmak ister misiniz",
         "joinUsBusiness": "Hizmet Almak İstiyorum",
         "joinUsEmployee": "Çalışan Olmak İstiyorum",
         "invalidUser": "Kullanıcı adı veya şifre yanlış"

@@ -32,7 +32,7 @@ class LoginViewModel extends ChangeNotifier implements IBaseViewModel{
   bool showPassword = false;
   String? selectedLanguage;
   int? selectedLanguageValue;
-  List<Image> imageSliderList = [Image(image:AssetImage(UrlIcon.instance.iconUrl),),Image(image:AssetImage(UrlIcon.instance.icon2Url),),Image(image:AssetImage(UrlIcon.instance.icon3Url),),];
+  List<Image> imageSliderList = [Image(image:AssetImage(UrlIcon.instance.iconUrl),fit: BoxFit.fill,),Image(image:AssetImage(UrlIcon.instance.icon2Url),fit: BoxFit.fill,),Image(image:AssetImage(UrlIcon.instance.icon3Url),fit: BoxFit.fill,),];
 
 
   int? changeSelectedLanguage(int selectedValue){

@@ -28,7 +28,6 @@ import 'package:motaperp_tctsolutions/product/widget/alert_dialog/alert_dialog_r
 import 'package:motaperp_tctsolutions/product/widget/slider/carousel_slider.dart';
 import 'package:motaperp_tctsolutions/view/create_request/request_view_model.dart';
 import 'package:provider/src/provider.dart';
-import '../../../core/widget/alertDialog/alert_dialog_no_connection.dart';
 import 'login_view_model.dart';
 import 'dart:ui' as UI;
 
@@ -44,8 +43,8 @@ class LoginView extends StatelessWidget {
         context.read<LoginViewModel>().init();
       },
         onPageBuilder: (BuildContext context, LoginViewModel viewModel) => Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Container(
             height: context.screenHeight,
             width: context.screenWidth,
@@ -64,13 +63,13 @@ class LoginView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:  [
-                Expanded(
-                  flex:15,
+                Flexible(
+                  flex:8,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(
-                        flex: 10,
+                        flex: 15,
                         child: Form(
                           key: context.watch<LoginViewModel>().loginKey,
                           child: Column(
@@ -113,9 +112,8 @@ class LoginView extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Flexible(
-                  flex:4,
+                  flex:3,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -126,7 +124,7 @@ class LoginView extends StatelessWidget {
                             textDirection: UI.TextDirection.rtl,
                             child: ElevatedCircularIconButton(
                               width:context.screenWidth/2.5,
-                              label: Text('${LocaleKeys.createRequest.locale}'),
+                              label: Text('${LocaleKeys.createRequest.locale}',textAlign: TextAlign.center,),
                               //color: Color(0xFF234d9b),
                               color: ColorConstants.instance.customBlueColor,
                               icon: Icon(Icons.create_new_folder,color: Colors.white,),
@@ -244,7 +242,26 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Flexible(flex:1,
+                      Flexible(
+                        flex: 2,
+                        child: FittedBox(
+                          child: Directionality(
+                            textDirection: UI.TextDirection.rtl,
+                            child: ElevatedCircularIconButton(
+                              width:context.screenWidth/2.5,
+                              label:Text('${LocaleKeys.login_joinUs.locale}',style: TextStyle(fontFamily: 'Bozon'),textAlign: TextAlign.center,),
+                              //color: Color(0xFF234d9b),
+                              color: ColorConstants.instance.customBlueColor,
+                              icon:Text('?',style: TextStyle(fontFamily: 'Bozon',fontSize:22)),
+                              onPressed: () {
+                                showDialog(context: context, builder: (BuildContext context){return AlertDialogRegister();});
+
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                     /* Flexible(flex:1,
                         child: Align(
                           alignment: Alignment.center,
                           child: GestureDetector(
@@ -255,7 +272,7 @@ class LoginView extends StatelessWidget {
                             // child: BoldText(text:'${LocaleKeys.welcome.locale}',underLine: true,color: Colors.black,fontSize: 20,),
                           ),
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
                 ),

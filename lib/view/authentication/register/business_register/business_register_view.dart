@@ -31,8 +31,8 @@ class RegisterBusinessView extends StatelessWidget {
         context.read<CityCubit>().fetchList();
       },
       onPageBuilder: (BuildContext context, RegisterBusinessViewModel viewModel) => Scaffold(
-        body: SingleChildScrollView(
-          child: SafeArea(
+        body: SafeArea(
+          child: SingleChildScrollView(
             child: Container(
               height: context.screenHeight,
               width:  context.screenWidth,
@@ -48,7 +48,7 @@ class RegisterBusinessView extends StatelessWidget {
                           children: [
                             Flexible(flex:3,child: ImageWidget(iconUrl: UrlIcon.instance.appLogo2Url)),
                             Spacer(),
-                            Flexible(flex:2,child: Text('${LocaleKeys.register_employee_membershipInformation.locale}',style: TextStyle(fontFamily: 'Bozon',fontSize:12,fontWeight: FontWeight.bold),textAlign: TextAlign.center)),
+                            Flexible(flex:2,child: FittedBox(child: Text('${LocaleKeys.register_employee_membershipInformation.locale}',style: TextStyle(fontFamily: 'Bozon',fontSize:12,fontWeight: FontWeight.bold),textAlign: TextAlign.center))),
                           ],
                         ),
                       ),

@@ -37,13 +37,12 @@ Future<void> main() async {
 Future<void> _init() async {
   INetworkChangeManager _networkChange = NetworkChangeManager();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
-    SystemUiOverlay.bottom,
-  ]);
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
   await LocaleManager.instance.preferencesInit();
   await EasyLocalization.ensureInitialized();
 

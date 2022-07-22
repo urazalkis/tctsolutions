@@ -55,15 +55,13 @@ class EmployeeBusinessDetailView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            FittedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("${LocaleKeys.register_employee_name.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),maxLines: 2,),
-                                  Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeName}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
-                                ],
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("${LocaleKeys.register_employee_name.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),maxLines: 2,),
+                                Flexible(child: Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeName}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),overflow: TextOverflow.ellipsis,)),
+                              ],
                             ),
                             FittedBox(
                               child: Row(
@@ -75,15 +73,13 @@ class EmployeeBusinessDetailView extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            FittedBox(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
-                                  Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeProfession}",style: TextStyle(fontFamily: 'bozon',color: Colors.white),),
-                                ],
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("${LocaleKeys.jobBusiness_job.locale} : ",style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'bozon',color: Colors.white),),
+                                Flexible(child: Text("${context.read<JobBusinessDetailViewModel>().selectedEmployeeProfession}",style: TextStyle(fontFamily: 'bozon',color: Colors.white,),maxLines:2,overflow: TextOverflow.ellipsis,)),
+                              ],
                             ),
                           ],
                         ),

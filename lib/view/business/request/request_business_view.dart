@@ -32,25 +32,32 @@ class RequestBusinessView extends StatelessWidget {
         context.read<RequestBusinessViewModel>().init();
       },
       onPageBuilder: (BuildContext context, RequestBusinessViewModel viewModel) => Scaffold(
-        appBar: AppBarCustom(title:LocaleKeys.newrequest.locale,),
+        backgroundColor: Color(0xFFBDCCD4),
         resizeToAvoidBottomInset: false,
-        body: LayoutBuilder(
-          builder: (BuildContext context,BoxConstraints constraints){
-            return SafeArea(
-              child: WillPopScope(
-                onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
-                child: SingleChildScrollView(
-                  child: Container(
-                    height:constraints.maxWidth<480 ? context.screenHeight/1.22 : context.screenHeight,
-                    width:  context.screenWidth,
-                    decoration: ColorConstants.instance.registerBackgroundColor,
+        appBar: AppBarCustom(title:LocaleKeys.newrequest.locale,),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: LayoutBuilder(
+              builder: (BuildContext context,BoxConstraints constraints){
+                return Container(
+                  width: context.screenWidth,
+                  height: context.screenHeight/1.25,
+                  decoration: ColorConstants.instance.registerBackgroundColor,
+                  child: WillPopScope(
+                    onWillPop:() async {NavigationService.instance.navigateToPageClear(path:NavigationConstants.LOGIN); return true;},
                     child: Center(
                       child: Padding(
                         padding: EdgeInsets.only(left:context.screenWidth/8,right: context.screenWidth/8),
                         child:Form(
                           key: context.watch<RequestBusinessViewModel>().formKey,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                           /*direction: Axis.vertical,
+                            runSpacing: 50,
+                            spacing: 50,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            runAlignment: WrapAlignment.spaceAround,
+                           alignment: WrapAlignment.spaceAround,*/
+                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               TextFormFieldRegister(
                                 validator: true,
@@ -112,10 +119,10 @@ class RequestBusinessView extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              ),
-            );
-          }
+                );
+              }
+            ),
+          ),
         ),
       ),
     );

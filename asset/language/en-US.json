@@ -26,11 +26,12 @@
     "detail": "Detail",
     "call": "Call",
     "update": "Update",
+    "logout": "Log out",
     "login": {
         "userName": "User Name",
         "password": "Password",
         "logIn": "Login",
-        "joinUs": "Would you like to work with us?",
+        "joinUs": "Would you like to work with us",
         "joinUsBusiness": "I want to get service",
         "joinUsEmployee": "I want to be a staff",
         "invalidUser": "Invalid username or password"

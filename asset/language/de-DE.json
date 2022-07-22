@@ -26,28 +26,29 @@
   "detail": "Detail",
   "call": "Anruf",
   "update": "Aktualisieren",
+  "logout": "Ausloggen",
   "login": {
     "userName": "Nutzername",
     "password": "Passwort",
     "logIn": "Anmeldung",
-    "joinUs": "Sie möchten mit uns zusammenarbeiten?",
-    "joinUsBusiness": "Ich möchte Service bekommen",
-    "joinUsEmployee": "Ich möchte Mitarbeiter werden",
+    "joinUs": "Sie möchten mit uns zusammenarbeiten",
+    "joinUsBusiness": "Firmenkunde: Dienstleistungen in Anspruch nehmen",
+    "joinUsEmployee": "Bewerber: Mitarbeiter (m/w/d) werden",
     "invalidUser": "Ungültiger Benutzername oder Passwort"
   },
   "register": {
-    "registerMe": "Registrieren",
+    "registerMe": "Senden",
     "registerSuccess":"Ihre Informationen wurden erfolgreich empfangen! Wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen.",
     "business": {
       "currentType": "Aktueller Typ",
       "companyName": "Name der Firma",
-      "authorizedName": "Autorisierter Name",
+      "authorizedName": "Name des Ansprechpartners",
       "city": "Stadt",
       "postCode": "Postleitzahl",
       "fixedNo": "Feste Nr"
     },
     "employee": {
-      "membershipInformation": "Informationen zur Mitgliedschaft",
+      "membershipInformation": "Beitrittsformular",
       "department": "Abteilung",
       "name": "Name",
       "surName": "Familien-oder Nachname",
@@ -65,7 +66,7 @@
   },
   "requestBusiness": {
     "jobRequestForm": "Job-Anfrage-Formular",
-    "employeeCount": "Angeforderte Mitarbeiterzahl",
+    "employeeCount": "Mitarbeiterzahl",
     "dayCount": "Angeforderte Tageszählung",
     "pickMinDate": "Startdatum des Jobs",
     "pickMaxDate": "Datum der Auftragserfüllung",
