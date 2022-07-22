@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\path_provider_android\\intermediates\\merged_res\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\path_provider_android\\intermediates\\merged_res\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\path_provider_android\\intermediates\\merged_res\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\path_provider_android\\intermediates\\merged_res\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_media_action.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a233c8ee3becab2fa6f89c2653b46a07\\transformed\\media-1.1.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\flutter_local_notifications\\intermediates\\merged_res\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+    }
+]

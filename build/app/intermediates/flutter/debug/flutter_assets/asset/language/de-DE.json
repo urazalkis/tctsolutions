@@ -1,0 +1,112 @@
+{
+  "welcome": "Willkommen",
+  "emptyFieldError": "Leeren Sie dieses Feld nicht!",
+  "emailRegex": "Email ist ungültig!",
+  "youcansearch": "Sie können oben suchen",
+  "okey": "Ok",
+  "language": "Sprache",
+  "date": "Datum",
+  "successMessage": "Prozess erfolgreich abgeschlossen!",
+  "errorMessage": "Ein Fehler ist aufgetreten!",
+  "newrequest" : "Neue Anfrage",
+  "myjobs" : "Meine Jobs",
+  "activeJobPool": "Aktiver Jobpool",
+  "notifications" : "Benachrichtigungen",
+  "profile" : "Profil",
+  "home" : "Heim",
+  "createRequest" : "Anfrage erstellen",
+  "or" : "OR",
+  "company" : "ODER",
+  "returnBack" : "Kehren Sie zurück",
+  "availableJobs" : "Verfügbare Berufe",
+  "criterion" : "Kriterium",
+  "wage" : "Lohn",
+  "noConnection": "Verbindungsproblem",
+  "noConnectionExplanation": "Internetverbindung fehlgeschlagen. Bitte überprüfen Sie Ihr Netzwerk",
+  "detail": "Detail",
+  "call": "Anruf",
+  "update": "Aktualisieren",
+  "logout": "Ausloggen",
+  "login": {
+    "userName": "Nutzername",
+    "password": "Passwort",
+    "logIn": "Anmeldung",
+    "joinUs": "Sie möchten mit uns zusammenarbeiten",
+    "joinUsBusiness": "Firmenkunde: Dienstleistungen in Anspruch nehmen",
+    "joinUsEmployee": "Bewerber: Mitarbeiter (m/w/d) werden",
+    "invalidUser": "Ungültiger Benutzername oder Passwort"
+  },
+  "register": {
+    "registerMe": "Senden",
+    "registerSuccess":"Ihre Informationen wurden erfolgreich empfangen! Wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen.",
+    "business": {
+      "currentType": "Aktueller Typ",
+      "companyName": "Name der Firma",
+      "authorizedName": "Name des Ansprechpartners",
+      "city": "Stadt",
+      "postCode": "Postleitzahl",
+      "fixedNo": "Feste Nr"
+    },
+    "employee": {
+      "membershipInformation": "Beitrittsformular",
+      "department": "Abteilung",
+      "name": "Name",
+      "surName": "Familien-oder Nachname",
+      "idNo": "Identität Nr",
+      "taxNo": "Steuer-Nr",
+      "insuranceNo": "Versicherungsnr",
+      "tel": "Telefon",
+      "email": "E-Mail",
+      "profession": "Beruf",
+      "street": "Straße",
+      "address": "Adresse",
+      "explanation": "Erläuterung"
+    }
+
+  },
+  "requestBusiness": {
+    "jobRequestForm": "Job-Anfrage-Formular",
+    "employeeCount": "Mitarbeiterzahl",
+    "dayCount": "Angeforderte Tageszählung",
+    "pickMinDate": "Startdatum des Jobs",
+    "pickMaxDate": "Datum der Auftragserfüllung",
+    "pickMinTime": "Auftragsstartzeit",
+    "pickMaxTime": "Auftragsabschlusszeit",
+    "send": "Senden",
+    "successRequest": "Ihre Anfrage ist erfolgreich eingegangen. Wir werden uns schnellstmöglich mit Ihnen in Verbindung setzen."
+  },
+  "jobBusiness": {
+    "job": "Arbeit",
+    "employeeCount": "Mitarbeiterzahl",
+    "dayCount": "Arbeitstage zählen",
+    "minDate": "Anfangsdatum",
+    "maxDate": "Enddatum",
+    "minTime": "Startzeit",
+    "maxTime": "Endzeit",
+    "activeJobs": "Aktive Jobs",
+    "pastJobs": "Vergangene Jobs",
+    "pendingApprovalJobs": "Jobs mit ausstehender Genehmigung"
+  },
+  "profileBusiness": {
+    "newUserName": "Neuer Benutzername",
+    "newUserNameAgain": "Wieder ein neuer Benutzername",
+    "newPassword": "Neues Passwort",
+    "newPasswordAgain": "Neues Passwort nochmal",
+    "dontMatchUserName": "Benutzernamen stimmen nicht überein!",
+    "dontMatchBeforeUserName": "Ihr vorheriger Benutzername stimmt nicht überein!",
+    "existuser": "Dieser Benutzername existiert bereits"
+  },
+  "jobEmployee": {
+    "Reserve": "Reservieren",
+    "cancelReserve": "Reservierung stornieren",
+    "reserveQuestion": "Möchten Sie diesen Job reservieren?",
+    "cancelReserveQuestion": "Möchten Sie diesen reservierten Job stornieren?",
+    "reserveError": "Dieser Job steht im Konflikt mit Ihrem aktiven Job!",
+    "reserveError2": "Sie haben bereits einen Reservejob!",
+    "pastScanError": "Sie können nur beim aktiven Auftrag scannen"
+  },
+  "profileEmployee": {
+    "hours": "Std.",
+    "completed": "abgeschlossen"
+  }
+}

@@ -1,0 +1,4 @@
+#Fri Jul 22 10:38:45 TRT 2022
+base.0=D\:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

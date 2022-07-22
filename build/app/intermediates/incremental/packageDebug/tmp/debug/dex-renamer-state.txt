@@ -1,0 +1,10 @@
+#Fri Jul 22 12:45:19 TRT 2022
+base.2=D\:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+path.2=classes3.dex
+base.1=D\:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+path.1=classes2.dex
+base.0=D\:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

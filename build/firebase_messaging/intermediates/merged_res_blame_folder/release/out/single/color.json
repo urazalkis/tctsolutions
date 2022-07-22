@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\firebase_messaging\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\f7f264c26ea42886d1a177c82cc821bc\\transformed\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\firebase_messaging\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\f7f264c26ea42886d1a177c82cc821bc\\transformed\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\firebase_messaging\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\f7f264c26ea42886d1a177c82cc821bc\\transformed\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_tint.xml"
+    }
+]

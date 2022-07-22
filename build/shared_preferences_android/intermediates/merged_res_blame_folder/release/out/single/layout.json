@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\Projects\\Mobile Projects\\motaperp_tctsolutions\\build\\shared_preferences_android\\intermediates\\merged_res\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\fb_ur\\.gradle\\caches\\transforms-3\\a467bb2825cbc42b4b818cc8dcc54f52\\transformed\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
+    }
+]
